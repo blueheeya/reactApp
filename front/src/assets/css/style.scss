@@ -1,2 +1,17 @@
 @import './tailStyle.scss';
-@import './reset.scss'
+@import './reset.scss';
+
+.container {
+    h2 {
+        margin-bottom: 40px;
+        font-size: 2em;
+        font-weight: bold;
+        text-align: center;
+    }
+}
+.topMenu {
+    a.active {
+        background: rgb(0, 73, 182);
+        color: #fff;
+    } 
+}

@@ -15,3 +15,9 @@
         color: #fff;
     } 
 }
+.pagerWrap ul {
+    >li.active {
+        text-decoration: underline;
+        font-weight: bold;
+    }
+}

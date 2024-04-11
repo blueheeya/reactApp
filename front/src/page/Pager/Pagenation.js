@@ -20,12 +20,14 @@ function Pagenation({listData}) {
                 })
             }
         </div>
-        <div className='flex justify-center p-4'>
-            <div>이전</div>
-            <ul>
-                <li>1</li>
+        <div className='flex justify-center p-4 pagerWrap'>
+            <div className='bg-gray-100 p-1 border rounded-md'>이전</div>
+            <ul className='flex'>
+                <li className='py-1 px-3 active'>1</li>
+                <li className='py-1 px-3'>2</li>
+                <li className='py-1 px-3'>3</li>
             </ul>
-            <div>다음</div>
+            <div className='bg-gray-100 p-1 border rounded-md'>다음</div>
         </div>
     </section>
     </>

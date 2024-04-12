@@ -1,5 +1,5 @@
 import React from "react";
-import {NavLink, Link} from 'react-router-dom';
+import {NavLink, Link } from 'react-router-dom';
 function Header(){
     const topMenu = [
       {to : "/" , name :"Home"},
@@ -10,7 +10,7 @@ function Header(){
     ]
     const userMenu = [
       {to : "/login",  name: "로그인"},
-      {to : "/regist",  name: "회원가입"}
+      {to : "/Regist",  name: "회원가입"}
     ]
     return (
       <header className="w-full bg-white h-16 py-5 shadow-md">
@@ -19,10 +19,10 @@ function Header(){
             <div className="flex w-full justify-between">
             <ul className="flex topMenu">
                 {
-                topMenu.map((item,i)=>{
+                topMenu.map((topitem,i)=>{
                     return (
                     <>
-                        <li key={i}><NavLink to={item.to} className="rounded-md p-2 ml-2 font-semibold">{item.name}</NavLink></li>
+                        <li key={i}><NavLink to={topitem.to} className="rounded-md p-2 ml-2 font-semibold">{topitem.name}</NavLink></li>
                     </>
                     )
                 })

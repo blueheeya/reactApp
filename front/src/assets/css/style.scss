@@ -9,6 +9,14 @@
         text-align: center;
     }
 }
+header {
+    position: fixed;
+    top:0;
+    left:0;
+}
+section {
+    padding-top: 80px;
+}
 .topMenu {
     a.active {
         background: rgb(0, 73, 182);

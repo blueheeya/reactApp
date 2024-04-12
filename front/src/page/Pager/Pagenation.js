@@ -1,19 +1,45 @@
-import React, { useState } from 'react'
+import React from 'react';
+import axios from 'axios';
+import {useState,useEffect} from 'react'
 
-function Pagenation({listData}) {
+function Pagenation() {
+    const [postData,setPostData] = useState ([]);
+    // const [viewLoding,setViewLoding] =useState (true);
+    useEffect(()=>{
+        async function viewList(){
+        try {
+            await axios
+            .get ("https://jsonplaceholder.typicode.com/posts?_page=1&limit=10")
+            .then ((res)=>{
+            setPostData(res.data)
+            console.log(res.data)
+            })
+            .catch ((error)=>{
+            console.log(error)
+            })
+            setTimeout(()=>{
+            // setViewLoding(false);
+            },3000)
+        } catch(error) {
+            console.log(error)
+            // setViewLoding(false);
+        }
+        }
+        viewList();
+    },[])
   return (
     <>
     <section className='container m-auto mt-7'>
         <h2>PageNation</h2>
         <div className='container m-auto mb-3'>
             {
-                listData.map((item,i)=>{
+                postData.map((pagelist,i)=>{
                     return (
-                    <ul className='flex justify-between border mb-2 p-4 rounded-md items-center'>
-                        <li key={i} className='font-semibold text-lg min-w-[50px] text-center'>{item.id}</li>
+                    <ul key={i} className='flex justify-between border mb-2 p-4 rounded-md items-center'>
+                        <li className='font-semibold text-lg min-w-[50px] text-center'>{pagelist.id}</li>
                         <ul className='w-full'>
-                            <li key={i} className=' font-semibold text-lg'>{item.title}</li>
-                            <li key={i}>{item.body}</li>
+                            <li className=' font-semibold text-lg'>{pagelist.title}</li>
+                            <li>{pagelist.body}</li>
                         </ul>
                     </ul>
                     )

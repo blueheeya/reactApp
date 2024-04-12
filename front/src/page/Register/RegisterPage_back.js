@@ -6,13 +6,13 @@ function RegisterPage() {
   const {
     register,
     handleSubmit,
-    formState: {errors},
+    formState :{errors},
     reset,
     watch,
   } =useForm({mode:'onChange'});
-  function onSubmit({email,name, password}){
+  function onSubmit({email,name,password}){
     const body = {
-        email,name, password
+      email,name,password
     };
     try {
       toast('🦄 회원가입을 성공하였습니다.', {
@@ -28,9 +28,8 @@ function RegisterPage() {
         });
         console.log(body);
         reset();  
-    } catch(error) {
-      toast.info('회원가입에 실패했습니다.')
-    }
+    } catch(error) {}
+     toast.info("회원가입에 실패!")  
   }
   const userEmail = {
     required:{
@@ -72,7 +71,7 @@ function RegisterPage() {
         {/* <h2>회원가입</h2> */}
         <div className='max-w-[400px] m-auto mt-28 border rounded-md p-7 shadow-md'>
           <h3 className='text-center font-semibold text-lg mb-4'>회원가입</h3>
-          <form onSubmit={handleSubmit(onSubmit)} className='mb-4'>
+          <form onsubmit={handleSubmit(onSubmit)} className='mb-4'>
             <div className='mb-4'>
               <label htmlFor='email' className=' font-semibold text-sm text-gray-500 pl-1'>이메일</label>
               <input type="text" id='email' className='border w-full rounded-md p-2 text-xs' placeholder='이메일을 입력하세요'

@@ -9,7 +9,12 @@ function RegisterPage() {
     formState :{errors},
     reset,
     watch,
-  } =useForm();
+  } =useForm({mode:'onChange'});
+  function onSubmit({email,name,password}){
+    const body = {
+      email,name,password
+    };
+    try {
   toast('🦄 회원가입을 성공하였습니다.', {
     position: "bottom-left",
     autoClose: 5000,

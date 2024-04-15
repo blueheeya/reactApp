@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {NavLink, Link } from 'react-router-dom';
 function Header(){
     const topMenu = [
@@ -7,11 +7,16 @@ function Header(){
       {to : "/pager" , name :"Pagenation"},
       {to : "/todo" , name :"TodoList"},
       {to : "/redux" , name :"Redux"},
+      {to : "/api" , name :"API"},
     ]
     const userMenu = [
       {to : "/login",  name: "로그인"},
       {to : "/Regist",  name: "회원가입"}
     ]
+    const [submenu,setSubMenu] = useState(false);
+    function onHover() {
+      setSubMenu(true);
+    }
     return (
       <header className="w-full bg-white h-16 py-5 shadow-md">
         <div className="container m-auto flex justify-between h-full items-center">
@@ -22,7 +27,8 @@ function Header(){
                 topMenu.map((topitem,i)=>{
                     return (
                     <>
-                        <li key={i}><NavLink to={topitem.to} className="rounded-md p-2 ml-2 font-semibold">{topitem.name}</NavLink></li>
+                        <li key={i} onMouseOver={()=>{onHover();}} ><NavLink to={topitem.to} className="rounded-md p-2 ml-2 font-semibold">{topitem.name}</NavLink>
+                        {submenu == true ? <Submenu1 /> :null}</li>
                     </>
                     )
                 })
@@ -42,5 +48,23 @@ function Header(){
       </header>
     )
   }
-
+ function Submenu1 () {
+  const sub1 = [
+    {to : "/swiper", name:"swiper_full"},
+    {to : "/swiper", name:"swiper_full"},
+    {to : "/swiper", name:"swiper_full"},
+    {to : "/swiper", name:"swiper_full"}
+  ]
+  return (
+    <ul>
+      {
+        sub1.map((subitem,i)=>{
+          return (
+          <li key={i}>{subitem}</li>
+        )
+        })
+      }
+    </ul>
+  )
+ }
   export default Header

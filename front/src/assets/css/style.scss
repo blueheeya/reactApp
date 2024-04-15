@@ -18,6 +18,9 @@ section {
     padding-top: 80px;
 }
 .topMenu {
+    a{
+        width: 300px;
+    }
     a.active {
         background: rgb(0, 73, 182);
         color: #fff;

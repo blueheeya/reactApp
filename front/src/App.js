@@ -11,6 +11,7 @@ import RegisterPage from "./page/Register/RegisterPage";
 import LoginPage from "./page/Login/LoginPage";
 import ReduxPage from "./page/Redux/ReduxPage";
 import TodoList from "./page/Pager/TodoList";
+import ApiKakao from "./page/API/ApiKakao";
 function App() {
   return (
     <>
@@ -21,6 +22,7 @@ function App() {
       <Route path="/pager" element={<Pagenation />}></Route>
       <Route path="/todo" element={<TodoList />}></Route>
       <Route path="/redux" element={<ReduxPage />}></Route>
+      <Route path="/api" element={<ApiKakao />}></Route>
       <Route path="/login" element={<LoginPage />}></Route>
       <Route path="/regist" exact element={<RegisterPage />}></Route>
     </Routes>

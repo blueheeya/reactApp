@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import {NavLink, Link } from 'react-router-dom';
 function Header(){
     const topMenu = [
-      {to : "/" , name :"Home"},
+      {to : "/" , name :"Home" , subMenu : "<Submenu1 />"},
       {to : "/swiper" , name :"Swiper"},
       {to : "/pager" , name :"Pagenation"},
       {to : "/todo" , name :"TodoList"},
@@ -13,9 +13,19 @@ function Header(){
       {to : "/login",  name: "로그인"},
       {to : "/Regist",  name: "회원가입"}
     ]
-    const [submenu,setSubMenu] = useState(false);
-    function onHover() {
-      setSubMenu(true);
+    const subMenu = [
+      <Submenu1 />,
+      <Submenu2 />,
+
+
+    ]
+    const [mNum,setMNum] = useState(0);
+    const [submenuView,setSubMenuView] = useState(false);
+    const onHover = () => {
+      setSubMenuView(true);
+    }
+    const onOut = () => {
+      setSubMenuView(false);
     }
     return (
       <header className="w-full bg-white h-16 py-5 shadow-md">
@@ -27,8 +37,9 @@ function Header(){
                 topMenu.map((topitem,i)=>{
                     return (
                     <>
-                        <li key={i} onMouseOver={()=>{onHover();}} ><NavLink to={topitem.to} className="rounded-md p-2 ml-2 font-semibold">{topitem.name}</NavLink>
-                        {submenu == true ? <Submenu1 /> :null}</li>
+                        <li key={i} onMouseOver={()=>{onHover(true)}} onMouseOut={onOut} ><NavLink to={topitem.to} className="rounded-md p-2 ml-2 font-semibold">{topitem.name}</NavLink>
+                       {/* {submenuView === true ? <Submenu1 />:null}  */}
+                        </li>
                     </>
                     )
                 })
@@ -50,17 +61,36 @@ function Header(){
   }
  function Submenu1 () {
   const sub1 = [
-    {to : "/swiper", name:"swiper_full"},
-    {to : "/swiper", name:"swiper_full"},
-    {to : "/swiper", name:"swiper_full"},
-    {to : "/swiper", name:"swiper_full"}
+    {to : "/swiper", name:"swiper_full1"},
+    {to : "/swiper", name:"swiper_full2"},
+    {to : "/swiper", name:"swiper_full3"},
+    {to : "/swiper", name:"swiper_full4"}
   ]
   return (
-    <ul>
+    <ul className=" absolute">
       {
         sub1.map((subitem,i)=>{
           return (
-          <li key={i}>{subitem}</li>
+          <li key={i}>{subitem.name}</li>
+        )
+        })
+      }
+    </ul>
+  )
+ }
+ function Submenu2 () {
+  const sub2 = [
+    {to : "/swiper", name:"swiper_full1"},
+    {to : "/swiper", name:"swiper_full2"},
+    {to : "/swiper", name:"swiper_full3"},
+    {to : "/swiper", name:"swiper_full4"}
+  ]
+  return (
+    <ul className=" absolute">
+      {
+        sub2.map((subitem,i)=>{
+          return (
+          <li key={i}>{subitem.name}</li>
         )
         })
       }

@@ -18,17 +18,28 @@ section {
     padding-top: 80px;
 }
 .topMenu {
-    a{
-        width: 300px;
+    a:link{
+        width: 100px;
+        color: #333;
     }
     a.active {
         background: rgb(0, 73, 182);
         color: #fff;
-    } 
+    }
 }
 .pagerWrap ul {
     >li.active {
         text-decoration: underline;
         font-weight: bold;
+    }
+}
+.dropdown {
+    position: absolute;
+    top: 100px;
+    display: flex;
+    background: #333;
+    // display: none;
+    a:link {
+        color: red;
     }
 }

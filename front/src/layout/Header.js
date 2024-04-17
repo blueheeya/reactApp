@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link, NavLink } from 'react-router-dom';
+// import { topMenu } from "../data/topMenu";
 function Header() {
     const topMenu = [
         {
@@ -17,20 +18,19 @@ function Header() {
                     name: "Swiper2"
                 },
             ]
-            ,
         },
         { to: "/pager", name: "Pagenation",
         submenu: [
             {
-                to: "Swiper1",
-                name: "Swiper1"
+                to: "pager1",
+                name: "pager1"
             },
             {
-                to: "Swiper2",
-                name: "Swiper2"
+                to: "Pager2",
+                name: "Pager2"
             },
         ]
-        , },
+        },
         { to: "/todo", name: "TodoList" },
         { to: "/redux", name: "Redux" },
         { to: "/api", name: "API" },
@@ -50,7 +50,7 @@ function Header() {
                             topMenu.map((menu, i) => {
                                 return (
                                     <>
-                                        <MenuItems items={menu} key={i} />
+                                        <MenuItems key = { i } items = { menu } />
                                     </>
                                 )
                             })
@@ -72,30 +72,29 @@ function Header() {
 }
 const MenuItems = ({ items }) => {
     const [dropdown, setDropdown] = useState(false);
-    const dropView = () => {
-        setDropdown(true);
-    }
+    // const [btnover, setBtnover] =  useState (false);
     return (
         <>
-            <li className="menu-items">
-                {items.submenu ? (
-                    <>
-                        <li onMouseOver={()=>{setDropdown(true)}}>
-                            <NavLink className="p-5 rounded-md" to={items.to} >{items.name}</NavLink>
-                            {dropdown == true ? <Dropdown submenus={items.submenu} /> : null}
-                        </li>
-                    </>
-                ) : <li><NavLink className="p-2 rounded-md" to={items.to}>{items.name}</NavLink></li>}
-            </li>
+            {items.submenu ? (
+                <>
+                    <li onMouseOver={()=>{setDropdown(true)}}  onMouseOut={()=>{setDropdown(false)}}>
+                        <NavLink className={`${dropdown == true ? "active1" :""}`} to={items.to} >{items.name}</NavLink>
+                        {dropdown == true ? <Dropdown submenus= { items.submenu } /> : null}
+                    </li>
+                </>
+            ) : <li><NavLink className="rounded-md" to={items.to}>{items.name}</NavLink></li>}
+
         </>
     )
 }
 
-const Dropdown = ({ submenus}) => {
+const Dropdown = ({ submenus }) => {
     return (
         <ul className="dropdown">
             {submenus.map((submenu, i) => {
+              return (
                 <li key={i} className="p-2"><NavLink to={submenu.to}>{submenu.name}</NavLink></li>
+              )  
             })}
         </ul>
     )
